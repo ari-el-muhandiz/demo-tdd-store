@@ -14,22 +14,22 @@ describe('API', function(){
   });	
 
   describe('List', function() {
-    
     it('should show all list of products', function(done){
       request('http://localhost:'+port)
       .get('/api/products')
-      .expect('Content-Type', /json/)
-      .expect('Content-Length', '20')
-      .expect(200)
       .end(function(err, res){
-        console.log(res.body);
-        done();
+		  res.body.length.should.equal(1)
+	    done();
       }); 
     });
 
   });
 
-  after(function() {
-    server.shutdown();
+  after(function(done) {
+	Product.remove({}, function (err) {
+	    // collection is now empty but not deleted
+	    server.shutdown();
+ 	   	done(err);
+	});
   });
 });
