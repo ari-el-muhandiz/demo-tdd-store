@@ -1,0 +1,37 @@
+{
+  "name": "demo-tdd-blog",
+  "version": "0.0.1",
+  "description": "This is demo app for my presentation about test drive development. I use blog app for use case",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.1"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-test": "^0.12.7",
+    "mocha": "^2.2.5",
+    "should": "^7.0.2",
+    "supertest": "^1.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ari-el-muhandiz/demo-tdd-blog.git"
+  },
+  "keywords": [
+    "blog",
+    "tdd",
+    "express"
+  ],
+  "author": "Ari Firmanto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ari-el-muhandiz/demo-tdd-blog/issues"
+  },
+  "homepage": "https://github.com/ari-el-muhandiz/demo-tdd-blog"
+}
