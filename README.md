@@ -1,4 +1,4 @@
-Blog App
+Store App
 
 Store Feature include
 
