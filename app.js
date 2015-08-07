@@ -2,21 +2,21 @@
 
 require('./config/initializer');
 
-var app     = MODULES.express(),
-	router = require('./middleware/routes');
-	
+var app    = MODULES.express(),
+	router = require('./middleware/routes'),
+    http   = require('http'),
+    server;
+
 app.use('/api', router)
 
-//app.listen(3000);
-
-//server = rq.http.createServer(app);
+server = http.createServer(app);
 
 function start(port) {
-  app.listen(port);
+  server.listen(port);
 };
 
 function shutdown() {
-  app.close();
+  server.close();
 };
 
 if(require.main === module)

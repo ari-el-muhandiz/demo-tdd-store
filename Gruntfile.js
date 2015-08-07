@@ -2,9 +2,17 @@
 
 module.exports = function(grunt) {
   grunt.initConfig({
+    env : {
+      dev : {
+        ENV : 'development'
+      },
+      test  : {
+        ENV: 'test'
+      }
+    },
 	watch: {
 	  scripts: {
-	    files: ['api/*.js'],
+	    files: ['api/*.js', 'test/*.js'],
 	    tasks: ['test'],
 	    options: {
 	      spawn: false,
@@ -21,17 +29,37 @@ module.exports = function(grunt) {
         },
         src: ['test/**/*.js']
       }
+    },
+    mocha_istanbul: {
+      coverage: {
+          src: 'test', // a folder works nicely
+          options: {
+              mask: '*.js'
+          }
+      }
+    },
+    istanbul_check_coverage: {
+      default: {
+        options: {
+          coverageFolder: 'coverage*', // will check both coverage folders and merge the coverage results
+          check: {
+            lines: 80,
+            statements: 80
+          }
+        }
+      }
     }
   });
 
+  //load library
+  grunt.loadNpmTasks('grunt-env');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  
-  // Add the grunt-mocha-test tasks.
+  grunt.loadNpmTasks('grunt-mocha-istanbul');
   grunt.loadNpmTasks('grunt-mocha-test');
-  
+
+  //register task
   grunt.registerTask('default', 'watch');
- 	
-  grunt.registerTask('test', 'mochaTest');
+  grunt.registerTask('test', ['env:test', 'mochaTest']);
+  grunt.registerTask('coverage', ['env:test', 'mocha_istanbul:coverage']);
  
-  
 };

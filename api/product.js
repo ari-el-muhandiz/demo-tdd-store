@@ -1,9 +1,10 @@
 var Product = require('../db/product');
 
 module.exports.list = function(req, res) {
-	Product.find({}, function(err, products) {
-		res.status(200).json(products);
-	});
+	//Product.find({}, function(err, products) {
+		//res.status(200).json(products);
+	//});
+  res.status(200).json({a: 1, b:2, c: 3})
 }
 
 module.exports.create = function(req, res) {
